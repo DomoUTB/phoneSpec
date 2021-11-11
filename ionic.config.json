@@ -1,0 +1,7 @@
+{
+  "name": "phoneSpec",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
