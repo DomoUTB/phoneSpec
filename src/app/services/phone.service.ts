@@ -13,8 +13,12 @@ export class PhoneService {
   searchData(title: string): Observable<any> {
     return this.http.get(`${this.url}search?query=${encodeURI(title)}`)
     .pipe(
-      map(results => {
+      map((results: any) => {
         console.log("RAW: ", results);
+        // TODO: přistupujete chybně ke struktuře API, mrknětě sem, zakomentované řádky jsou funkční.
+        //  Správná API ve formátu REST JSON je objsekt, ne pole. Ve vašem return k ní ale přistupujete jako k poli.
+        // console.log("RAW: ", results.data.phones);
+        // return results.data.phones;
         return results['phones'];
       })
     );

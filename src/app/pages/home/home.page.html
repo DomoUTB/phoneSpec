@@ -4,7 +4,7 @@
   </ion-searchbar>
 
   <ion-list>
-    <ion-item button *ngFor="let item of (results | async)"
+    <ion-item button *ngFor="let item of results | async"
       [routerLink]="['/', 'phones', item.slug]">
       {{ item.slug }}
     </ion-item>
