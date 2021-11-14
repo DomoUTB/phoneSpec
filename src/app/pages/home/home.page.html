@@ -1,0 +1,12 @@
+<ion-content padding>
+  <ion-searchbar showCancelButton="never" animated placeholder="iPhone 13"
+    enterkeyhint="search" [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)">
+  </ion-searchbar>
+
+  <ion-list>
+    <ion-item button *ngFor="let item of (results | async)"
+      [routerLink]="['/', 'phones', item.slug]">
+      {{ item.slug }}
+    </ion-item>
+  </ion-list>
+</ion-content>
