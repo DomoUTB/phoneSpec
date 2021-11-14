@@ -8,7 +8,7 @@ import { PhoneService } from 'src/app/services/phone.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  results: Observable<any>;
+  results: Observable<any[]>;
   searchTerm = '';
 
   constructor(private phoneService: PhoneService) { }
