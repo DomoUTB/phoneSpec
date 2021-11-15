@@ -19,7 +19,15 @@ export class PhoneService {
       })
     );
   }
-  getDetails(id) {
-    return this.http.get(`${this.url}${id}`);
+
+  getLatest(): Observable <any> {
+    return this.http.get(`${this.url}latest`)
+    .pipe(
+      map((results: any) => results.data.phones)
+    );
+  }
+
+  getDetails(slug) {
+    return this.http.get(`${this.url}${slug}`);
   }
 }

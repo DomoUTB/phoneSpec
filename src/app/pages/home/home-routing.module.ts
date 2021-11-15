@@ -7,10 +7,6 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage
-  },
-  {
-    path: '/:id',
-    loadChildren: () => import('../phone-details/phone-details.module').then( m => m.PhoneDetailsPageModule)
   }
 ];
 

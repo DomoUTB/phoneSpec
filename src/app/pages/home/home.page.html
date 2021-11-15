@@ -4,9 +4,16 @@
   </ion-searchbar>
 
   <ion-list>
-    <ion-item button *ngFor="let item of results | async"
-      [routerLink]="['/', 'phones', item.slug]">
-      {{ item.brand }} {{ item.phone_name }}
+    <ion-item button *ngFor="let phone of results | async"
+      [routerLink]="['/', 'phones', phone.slug]">
+      <ion-avatar slot="start">
+        <img [src]="phone.image" *ngIf="phone.image !== null">
+      </ion-avatar>
+
+      <ion-label text-wrap>
+        <h3>{{ phone.phone_name }}</h3>
+        {{ phone.brand }}
+      </ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

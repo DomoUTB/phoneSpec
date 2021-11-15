@@ -14,6 +14,7 @@ export class HomePage implements OnInit {
   constructor(private phoneService: PhoneService) { }
 
   ngOnInit() {
+    this.results = this.phoneService.getLatest();
   }
 
   searchChanged() {

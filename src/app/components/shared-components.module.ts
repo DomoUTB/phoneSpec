@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     IonicModule,
     RouterModule
-  ], 
+  ],
   exports: [HeaderComponent]
 })
 export class SharedComponentsModule { }
