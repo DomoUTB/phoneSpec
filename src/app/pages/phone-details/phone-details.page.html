@@ -1,9 +1,47 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ information.data.phone_name }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ information?.data.brand }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  Content
+  <ion-card *ngIf="information">
+    <ion-card-header>
+      <ion-card-title>
+        {{ information.data.phone_name }}
+      </ion-card-title>
+
+      <ion-card-subtitle>
+        {{ information.data.release_date }}
+      </ion-card-subtitle>
+
+      {{ information.data.os }}
+
+    </ion-card-header>
+    <ion-card-content>
+      <img [src]="information.data.phone_images[0]" class="info-img">
+      
+      <ion-item lines="none">
+        <ion-icon name="phone-portrait-outline" slot="start"></ion-icon>
+        <ion-label>{{ information.data.dimension }}</ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-icon name="hardware-chip-outline" slot="start"></ion-icon>
+        <ion-label class="ion-text-wrap">{{ information.data.specifications[4].specs[1].val[0] }}</ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-icon name="file-tray-stacked-outline" slot="start"></ion-icon>
+        <ion-label class="ion-text-wrap">{{ information.data.storage }}</ion-label>
+      </ion-item>
+
+      <ion-button expand="full" (click)="openWebsite()" *ngIf="information.data.phone_images[0] && information.data.phone_images[0] !== null">
+        Full Image
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

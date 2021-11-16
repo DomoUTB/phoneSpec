@@ -4,11 +4,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/menu/menu.module').then( m => m.MenuPageModule)
+    loadChildren: () => import('./pages/menu/menu.module').then(m => m.MenuPageModule)
   },
   {
     path: 'phones/:slug',
-    loadChildren: () => import('./pages/phone-details/phone-details.module').then( m => m.PhoneDetailsPageModule)
+    loadChildren: () => import('./pages/phone-details/phone-details.module').then(m => m.PhoneDetailsPageModule)
   },
 ];
 

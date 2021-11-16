@@ -18,6 +18,11 @@ export class HomePage implements OnInit {
   }
 
   searchChanged() {
-    this.results = this.phoneService.searchData(this.searchTerm);
+    if(this.searchTerm === '') {
+      this.results = this.phoneService.getLatest();
+    }
+    else {
+      this.results = this.phoneService.searchData(this.searchTerm);
+    }
   }
 }
