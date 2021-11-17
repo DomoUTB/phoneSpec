@@ -24,11 +24,17 @@ export class MenuPage implements OnInit {
       icon: 'information-circle',
       path: '/about'
     }
-  ]
+  ];
 
   title = 'Home';
-  constructor(private menuCtrl: MenuController, private plt:Platform){
+  constructor(private menuCtrl: MenuController, private plt: Platform) {
 
+  }
+
+  @HostListener('window:resize', ['$event'])
+  private onresize(event) {
+    const newWidth = event.target.innerWidth;
+    this.toggleMenu(newWidth);
   }
 
   ngOnInit() {
@@ -36,21 +42,15 @@ export class MenuPage implements OnInit {
     this.toggleMenu(width);
   }
 
-  setTitle(title){
+  setTitle(title) {
     this.title = title;
   }
 
-  toggleMenu(width){
-    if(width > 768){
+  toggleMenu(width) {
+    if (width > 768) {
       this.menuCtrl.enable(false, 'myMenu');
     } else {
       this.menuCtrl.enable(true, 'myMenu');
     }
-  }
-
-  @HostListener('window:resize', ['$event'])
-  private onresize(event) {
-    const newWidth = event.target.innerWidth;
-    this.toggleMenu(newWidth);
   }
 }
