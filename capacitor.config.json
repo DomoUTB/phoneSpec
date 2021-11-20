@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "phoneSpec",
+	"appId": "com.phonespec.domoutb",
+	"appName": "PhoneSpec",
 	"webDir": "www",
 	"bundledWebRuntime": false
 }
