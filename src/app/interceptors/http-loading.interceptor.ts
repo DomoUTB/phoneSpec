@@ -63,7 +63,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
 
     async presentFailedAlert(msg) {
         const alert = await this.alertCtrl.create({
-            header: 'Oops',
+            header: 'Error.',
             message: msg,
             buttons: ['OK']
         });
