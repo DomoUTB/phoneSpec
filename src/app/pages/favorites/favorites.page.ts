@@ -18,20 +18,13 @@ export class FavoritesPage implements OnInit {
   }
 
   ngOnInit() {
-    //this.phones = this.http.get('https://api-mobilespecs.azharimm.site/v2/latest');
+
   }
 
   async loadData() {
-    // this.listData = await this.dataService.getData();
     this.dataService.getData().subscribe(res =>
       this.listData = res);
   }
-
-  // async addData() {
-  //   to implement in phone-details
-  //   await this.dataService.addData(this.phones);
-  //   this.loadData();
-  // }
 
   async removeItem(index) {
     this.dataService.removeItem(index);

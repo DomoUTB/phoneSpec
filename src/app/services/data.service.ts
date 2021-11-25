@@ -14,7 +14,7 @@ export class DataService {
   private storageReady = new BehaviorSubject(false);
 
   constructor(private storage: Storage) {
-    // this.init();
+
   }
 
   async init() {

@@ -4,9 +4,9 @@
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ information?.data.brand }}</ion-title>
-    <ion-buttons slot="end" *ngIf="information">
+    <ion-buttons slot="end">
       <ion-button (click)="addData()">
-        <ion-icon slot="icon-only" name="star-outline"></ion-icon>
+        <ion-icon slot="icon-only" [name]="ikona"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

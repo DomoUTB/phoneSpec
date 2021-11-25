@@ -31,7 +31,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
                         this.showRetryToast(retries);
                     }),
                     map(error => {
-                        if (retries++ === 3) {
+                        if (retries++ === 2) {
                             throw error;
                         }
                         return error;
@@ -55,7 +55,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
 
     async showRetryToast(retryCount) {
         const toast = await this.toastCtrl.create({
-            message: `Retry: ${retryCount}/3`,
+            message: `Retry: ${retryCount}/2`,
             duration: 1000
         });
         toast.present();
