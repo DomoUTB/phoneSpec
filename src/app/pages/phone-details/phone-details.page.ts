@@ -38,30 +38,38 @@ export class PhoneDetailsPage implements OnInit {
   changeIcon() {
     console.log(`changeIcon - ${this.slug}`);
     console.log(this.listData);
-
-    if (this.listData.findIndex(s => s.slug === this.slug) !== -1) {
-      this.ikona = 'star';
-      console.log('ikona = star');
+    if(this.listData !== null) {
+      if (this.listData.findIndex(s => s.slug === this.slug) !== -1) {
+        this.ikona = 'star';
+        console.log('ikona = star');
+      } else {
+        this.ikona = 'star-outline';
+        console.log('ikona = star-outline');
+      }
     } else {
-      this.ikona = 'star-outline';
-      console.log('ikona = star-outline');
+      this.loadData();
     }
   }
 
   async loadData() {
     this.dataService.getData().subscribe(res => this.listData = res);
-    this.changeIcon();
   }
 
   async addData() {
     this.information.data.slug = this.slug;
-    if ((this.listData.length > 0) && (this.listData.findIndex(s => s.slug === this.information.data.slug) === -1)) {
+    if (this.listData === null) {
       await this.dataService.addData(this.information.data);
       await this.loadData();
       this.ikona = 'star';
     } else {
-      console.log('Phone already exists in favorites.');
-      this.changeIcon();
+      if ((this.listData.length > 0) && (this.listData.findIndex(s => s.slug === this.information.data.slug) === -1)) {
+        await this.dataService.addData(this.information.data);
+        await this.loadData();
+        this.ikona = 'star';
+      } else {
+        console.log('Phone already exists in favorites.');
+        this.changeIcon();
+      }
     }
   }
 }
