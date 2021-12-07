@@ -20,13 +20,14 @@ export class PhoneDetailsPage implements OnInit {
     private phoneService: PhoneService,
     private dataService: DataService) {
       this.loadData();
+      console.log('Constructor is loading data.');
   }
 
   ngOnInit() {
     this.slug = this.activatedRoute.snapshot.paramMap.get('slug');
     this.phoneService.getDetails(this.slug).subscribe(result => {
       this.information = result;
-      console.log('Phone Name: ', this.information.data.phone_name);
+      console.log('ngOnInit: Phone Name: ', this.information.data.phone_name);
       this.changeIcon();
     });
   }
@@ -46,28 +47,31 @@ export class PhoneDetailsPage implements OnInit {
         this.ikona = 'star-outline';
         console.log('ikona = star-outline');
       }
-    } else {
-      this.loadData();
     }
   }
 
-  async loadData() {
-    this.dataService.getData().subscribe(res => this.listData = res);
+  loadData() {
+    this.dataService.getData().subscribe(res => {
+      this.listData = res;
+      //console.log(`\nloadData: ${this.listData}`);
+      this.changeIcon();
+    });
   }
 
   async addData() {
     this.information.data.slug = this.slug;
     if (this.listData === null) {
       await this.dataService.addData(this.information.data);
-      await this.loadData();
-      this.ikona = 'star';
+      this.loadData();
     } else {
       if ((this.listData.length > 0) && (this.listData.findIndex(s => s.slug === this.information.data.slug) === -1)) {
         await this.dataService.addData(this.information.data);
-        await this.loadData();
-        this.ikona = 'star';
+        this.loadData();
       } else {
-        console.log('Phone already exists in favorites.');
+        console.log('Phone already exists in favorites. Removing.');
+        const index = this.listData.findIndex(s => s.slug === this.information.data.slug);
+        this.dataService.removeItem(index);
+        this.listData.splice(index, 1);
         this.changeIcon();
       }
     }

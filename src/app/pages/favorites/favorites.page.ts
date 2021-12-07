@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+//import { Observable } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class FavoritesPage implements OnInit {
 
-  phones: Observable<any>;
+  //phones: Observable<any>;
   listData = [];
 
   constructor(private http: HttpClient, private dataService: DataService) {
@@ -22,8 +22,7 @@ export class FavoritesPage implements OnInit {
   }
 
   async loadData() {
-    this.dataService.getData().subscribe(res =>
-      this.listData = res);
+    this.dataService.getData().subscribe(res => this.listData = res);
   }
 
   async removeItem(index) {
